@@ -95,10 +95,73 @@ body {
     min-height: calc(100vh - 80px);
 }
 
+/* ========== 平板适配 (1024px以下) ========== */
 @media (max-width: 1024px) {
     .game-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    /* 积木面板改为横向滚动 */
+    .panel-blocks {
+        order: 2;
+    }
+
+    .blocks-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        max-height: none;
+        padding-bottom: 8px;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .blocks-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .block {
+        min-width: 100px;
+        padding: 10px 14px;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    .block-group {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    /* 编程区 */
+    .panel-code {
+        order: 3;
+        min-height: 200px;
+    }
+
+    .code-area {
+        min-height: 150px;
+        max-height: 250px;
+        overflow-y: auto;
+    }
+
+    /* 游戏舞台放在最上面 */
+    .panel-stage {
+        order: 1;
+    }
+
+    .stage-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #game-canvas {
+        max-width: 100%;
+        height: auto;
     }
 }
 
@@ -1123,95 +1186,244 @@ body {
 /* ========== 响应式 ========== */
 @media (max-width: 768px) {
     .header {
-        padding: 10px 16px;
+        padding: 8px 12px;
     }
 
     .logo-text {
+        font-size: 14px;
+    }
+
+    .header-actions {
+        gap: 8px;
+    }
+
+    .stars {
+        font-size: 14px;
+    }
+
+    .btn-theme, .btn-settings, .btn-map, .btn-audio, .btn-voice, .btn-create-level {
+        width: 36px;
+        height: 36px;
         font-size: 16px;
     }
 
     .game-container {
-        padding: 12px;
-        gap: 12px;
+        padding: 8px;
+        gap: 10px;
     }
 
     .panel {
-        padding: 12px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .panel-title {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    /* 积木区 - 更适合小屏幕 */
+    .blocks-container {
+        gap: 8px;
+        padding-bottom: 4px;
+    }
+
+    .block {
+        min-width: 80px;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 10px;
+    }
+
+    .block-icon {
+        font-size: 18px;
+    }
+
+    /* 编程区 */
+    .panel-code {
+        min-height: 120px;
+    }
+
+    .code-area {
+        min-height: 100px;
+        padding: 10px;
+    }
+
+    .code-placeholder {
+        font-size: 14px;
+    }
+
+    .code-block {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .code-actions {
+        gap: 8px;
+    }
+
+    .code-actions .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    /* 舞台区 */
+    .stage-container {
+        padding: 8px;
+    }
+
+    #game-canvas {
+        max-width: 100%;
+        max-height: 280px;
+    }
+
+    .stage-controls {
+        gap: 8px;
+    }
+
+    .btn-play {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+
+    .btn-speed {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .level-info {
+        font-size: 12px;
+    }
+
+    .progress-bar {
+        height: 6px;
+    }
+
+    /* 弹窗 */
+    .modal-content {
+        max-width: 95%;
+        max-height: 90vh;
+        padding: 16px;
     }
 
     .character-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .character-item {
+        padding: 12px 8px;
+    }
+
+    .character-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 32px;
     }
 
     .theme-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .unlock-notification {
-        left: 20px;
-        right: 20px;
-        top: 80px;
+        left: 16px;
+        right: 16px;
+        top: 70px;
+        padding: 12px 16px;
     }
 
+    /* 关卡地图 */
     .level-map-body {
-        height: 500px;
+        height: 400px;
+    }
+
+    .worlds-nav {
+        gap: 8px;
     }
 
     .world-tab {
-        min-width: 60px;
-        padding: 8px 12px;
+        min-width: 50px;
+        padding: 6px 8px;
     }
 
     .world-icon {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .world-name {
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .levels-path {
-        height: 350px;
+        height: 280px;
     }
 
     .level-dot {
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
     }
 
     .level-stars {
-        font-size: 10px;
+        font-size: 9px;
     }
 
-    /* 编辑器响应式 */
+    /* 编辑器 */
     .level-editor-body {
         flex-direction: column;
-        padding: 12px;
+        padding: 10px;
     }
 
     .editor-toolbar {
         width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
+        gap: 12px;
     }
 
     .tool-group {
         flex: 1;
-        min-width: 140px;
+        min-width: 120px;
     }
 
     .tools {
         grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .tool-btn {
+        padding: 6px 4px;
+        font-size: 11px;
     }
 
     .editor-sidebar {
         width: 100%;
-        max-height: 200px;
+        max-height: 180px;
     }
 
     #editor-canvas {
         max-width: 100%;
+        max-height: 250px;
+    }
+
+    /* 触摸优化 */
+    .block:active,
+    .code-block:active,
+    .btn:active,
+    .tool-btn:active {
+        transform: scale(0.95);
+    }
+
+    /* 移除hover效果（触摸设备不需要） */
+    .block:hover,
+    .btn:hover {
+        transform: none;
+    }
+
+    .block:active {
+        transform: scale(0.95);
     }
 }
 
