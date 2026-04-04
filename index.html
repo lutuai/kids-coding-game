@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>小丸子的编程冒险</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🏠</span>
+                <span class="logo-text">小丸子的编程冒险</span>
+            </div>
+            <div class="header-actions">
+                <div class="stars">⭐ <span id="star-count">0</span></div>
+                <button class="btn-map" id="btn-map" title="关卡地图">🗺️</button>
+                <button class="btn-theme" id="btn-theme" title="切换主题">🎨</button>
+                <button class="btn-settings" id="btn-settings" title="设置">⚙️</button>
+            </div>
+        </header>
+
+        <!-- 主游戏区 -->
+        <main class="game-container">
+            <!-- 左侧：指令积木区 -->
+            <section class="panel panel-blocks">
+                <h3 class="panel-title">🧩 指令积木</h3>
+                <div class="blocks-container" id="blocks-container">
+                    <!-- 动态生成 -->
+                </div>
+            </section>
+
+            <!-- 中间：编程区 -->
+            <section class="panel panel-code">
+                <h3 class="panel-title">📋 编程区</h3>
+                <div class="code-area" id="code-area">
+                    <div class="code-placeholder">拖拽积木到这里~</div>
+                </div>
+                <div class="code-actions">
+                    <button class="btn btn-clear" id="btn-clear">🗑️ 清空</button>
+                    <button class="btn btn-undo" id="btn-undo">⏪ 撤销</button>
+                </div>
+            </section>
+
+            <!-- 右侧：游戏舞台 -->
+            <section class="panel panel-stage">
+                <h3 class="panel-title">🎮 游戏舞台</h3>
+                <div class="stage-container">
+                    <canvas id="game-canvas" width="400" height="400"></canvas>
+                    <div class="stage-overlay" id="stage-overlay"></div>
+                </div>
+                <div class="stage-controls">
+                    <button class="btn-speed" data-speed="slow">🐢</button>
+                    <button class="btn-play" id="btn-play">▶️ 开始</button>
+                    <button class="btn-speed" data-speed="fast">🐰</button>
+                </div>
+                <div class="level-info">
+                    <span>第 <span id="current-level">1</span> 关 / 30</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 角色选择弹窗 -->
+        <div class="modal" id="character-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>选择你的小伙伴</h3>
+                    <button class="btn-close" id="btn-close-character">×</button>
+                </div>
+                <div class="character-grid" id="character-grid">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 主题选择弹窗 -->
+        <div class="modal" id="theme-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>选择主题</h3>
+                    <button class="btn-close" id="btn-close-theme">×</button>
+                </div>
+                <div class="theme-grid" id="theme-grid">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 关卡完成弹窗 -->
+        <div class="modal" id="level-complete-modal">
+            <div class="modal-content modal-celebrate">
+                <div class="celebrate-animation">🎉</div>
+                <h2>太棒了！</h2>
+                <p>小丸子成功完成了任务！</p>
+                <div class="star-rating" id="star-rating">⭐⭐⭐</div>
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="btn-next-level">下一关 →</button>
+                    <button class="btn btn-secondary" id="btn-replay">再玩一次</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本加载 -->
+    <script src="src/utils/helpers.js"></script>
+    <script src="src/themes/candy.js"></script>
+    <script src="src/themes/space.js"></script>
+    <script src="src/themes/ocean.js"></script>
+    <script src="src/themes/forest.js"></script>
+    <script src="src/themes/neon.js"></script>
+    <script src="src/themes/ink.js"></script>
+    <script src="src/characters/index.js"></script>
+    <script src="src/components/AudioManager.js"></script>
+    <script src="src/components/VoiceManager.js"></script>
+    <script src="src/components/ThemeManager.js"></script>
+    <script src="src/components/Character.js"></script>
+    <script src="src/components/Stage.js"></script>
+    <script src="src/components/BlockPanel.js"></script>
+    <script src="src/components/CodeArea.js"></script>
+    <script src="src/components/LevelMap.js"></script>
+    <script src="src/components/LevelEditor.js"></script>
+    <script src="src/components/Game.js"></script>
+    <script src="src/levels/world1/level1.js"></script>
+    <script src="src/levels/world2/level6.js"></script>
+    <script src="src/levels/world3/level11.js"></script>
+    <script src="src/levels/world4/level16.js"></script>
+    <script src="src/levels/world5/level21.js"></script>
+    <script src="src/levels/world6/level26.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html>
