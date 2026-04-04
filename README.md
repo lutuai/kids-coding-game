@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kids-game.lutuai.space/" target="_blank">🌐 在线试玩</a>
+  <a href="https://kid-game.lutuai.space/" target="_blank">🌐 在线试玩</a>
   &nbsp;|&nbsp;
   <a href="#-快速开始">📦 本地运行</a>
   &nbsp;|&nbsp;
@@ -64,7 +64,7 @@
 
 ### 方式一：在线试玩（推荐）
 
-直接访问：👉 [https://kids-game.lutuai.space/](https://kids-game.lutuai.space/)
+直接访问：👉 [https://kid-game.lutuai.space/](https://kid-game.lutuai.space/)
 
 无需安装，浏览器打开即玩，支持电脑、平板、手机。
 
