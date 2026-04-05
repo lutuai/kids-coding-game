@@ -96,31 +96,77 @@ body {
     background: var(--grid);
 }
 
-/* ========== 主游戏区 ========== */
+/* ========== 主游戏区 - PC端纵向布局 ========== */
 .game-container {
-    display: grid;
-    grid-template-columns: 200px 1fr 420px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
     padding: 20px;
-    max-width: 1400px;
+    max-width: 800px;
     margin: 0 auto;
     min-height: calc(100vh - 80px);
+}
+
+/* 游戏舞台 */
+.panel-stage {
+    display: flex;
+    flex-direction: column;
+}
+
+.stage-container {
+    display: flex;
+    justify-content: center;
+}
+
+#game-canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 积木面板 - 横向排列 */
+.panel-blocks {
+    display: flex;
+    flex-direction: column;
+}
+
+.blocks-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    overflow-x: visible;
+}
+
+.block-group {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+/* 编程区 */
+.panel-code {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+.code-area {
+    flex: 1;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 /* ========== 平板适配 (1024px以下) ========== */
 @media (max-width: 1024px) {
     .game-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
         padding: 12px;
         gap: 12px;
-        min-height: auto;
-        height: auto;
+        max-width: 100%;
     }
 
-    /* 游戏舞台 - 放在最上面，紧凑显示 */
     .panel-stage {
-        order: 1;
+        /* 舞台紧凑显示 */
     }
 
     .stage-container {
@@ -143,14 +189,13 @@ body {
 
     /* 积木面板 - 横向滚动 */
     .panel-blocks {
-        order: 2;
+        /* 保持横向flex布局 */
     }
 
     .blocks-container {
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
-        max-height: none;
         padding-bottom: 8px;
         gap: 10px;
         -webkit-overflow-scrolling: touch;
@@ -169,14 +214,12 @@ body {
     }
 
     .block-group {
-        display: flex;
         flex-direction: row;
         gap: 10px;
     }
 
-    /* 编程区 - 放在最下面，可展开 */
+    /* 编程区 - 调整高度 */
     .panel-code {
-        order: 3;
         min-height: auto;
     }
 
@@ -1529,9 +1572,9 @@ body {
         padding-bottom: 4px;
     }
 
-    /* 游戏舞台 - 固定在顶部，紧凑显示 */
+    /* 游戏舞台 - 紧凑显示 */
     .panel-stage {
-        order: 1;
+        /* 保持flex纵向布局 */
     }
 
     .stage-container {
@@ -1564,7 +1607,7 @@ body {
 
     /* 积木区 - 横向滚动，紧凑显示 */
     .panel-blocks {
-        order: 2;
+        /* 保持flex纵向布局 */
     }
 
     .blocks-container {
@@ -1601,7 +1644,6 @@ body {
 
     /* 编程区 - 底部展开，支持滚动 */
     .panel-code {
-        order: 3;
         min-height: 100px;
     }
 
