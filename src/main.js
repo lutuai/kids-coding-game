@@ -1,13 +1,23 @@
 /**
  * 小丸子的编程冒险 - 主入口
  */
+
+// 版本号 - 每次发布新版本后手动+1
+const VERSION = '1.0.1';
+
 document.addEventListener('DOMContentLoaded', () => {
     // 初始化游戏
     window.game = new Game();
     window.game.init();
 
+    // 显示版本号
+    const versionEl = document.getElementById('version');
+    if (versionEl) {
+        versionEl.textContent = 'v' + VERSION;
+    }
+
     console.log('🎮 小丸子的编程冒险 已启动！');
-    console.log('📝 当前版本: v1.0.0');
+    console.log('📝 当前版本: v' + VERSION);
     console.log('🎨 主题系统已就绪');
     console.log('🐱 角色系统已就绪');
     console.log('🔊 音效系统已就绪');

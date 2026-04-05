@@ -70,6 +70,16 @@ body {
     color: #FFB800;
 }
 
+.version-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+    background: var(--background);
+    padding: 4px 8px;
+    border-radius: 10px;
+    margin-left: 4px;
+}
+
 .btn-theme, .btn-settings {
     width: 40px;
     height: 40px;
@@ -1479,6 +1489,11 @@ body {
 
     .stars {
         font-size: 12px;
+    }
+
+    .version-badge {
+        font-size: 10px;
+        padding: 3px 6px;
     }
 
     .btn-theme, .btn-settings, .btn-map {
