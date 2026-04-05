@@ -112,13 +112,36 @@ body {
     .game-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
-        padding: 16px;
-        gap: 16px;
+        padding: 12px;
+        gap: 12px;
         min-height: auto;
         height: auto;
     }
 
-    /* 积木面板改为横向滚动 */
+    /* 游戏舞台 - 放在最上面，紧凑显示 */
+    .panel-stage {
+        order: 1;
+    }
+
+    .stage-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #game-canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .stage-controls {
+        margin-top: 10px;
+    }
+
+    .level-info {
+        margin-top: 10px;
+    }
+
+    /* 积木面板 - 横向滚动 */
     .panel-blocks {
         order: 2;
     }
@@ -139,8 +162,8 @@ body {
     }
 
     .block {
-        min-width: 100px;
-        padding: 10px 14px;
+        min-width: 80px;
+        padding: 10px 12px;
         font-size: 13px;
         flex-shrink: 0;
     }
@@ -151,31 +174,16 @@ body {
         gap: 10px;
     }
 
-    /* 编程区 */
+    /* 编程区 - 放在最下面，可展开 */
     .panel-code {
         order: 3;
         min-height: auto;
     }
 
     .code-area {
-        min-height: 150px;
-        max-height: none;
-        overflow-y: visible;
-    }
-
-    /* 游戏舞台放在最上面 */
-    .panel-stage {
-        order: 1;
-    }
-
-    .stage-container {
-        display: flex;
-        justify-content: center;
-    }
-
-    #game-canvas {
-        max-width: 100%;
-        height: auto;
+        min-height: 120px;
+        max-height: 300px;
+        overflow-y: auto;
     }
 }
 
@@ -1521,7 +1529,40 @@ body {
         padding-bottom: 4px;
     }
 
-    /* 积木区 - 手机上改为紧凑横向滚动 */
+    /* 游戏舞台 - 固定在顶部，紧凑显示 */
+    .panel-stage {
+        order: 1;
+    }
+
+    .stage-container {
+        padding: 4px;
+    }
+
+    #game-canvas {
+        max-height: 220px;
+    }
+
+    .stage-controls {
+        margin-top: 8px;
+    }
+
+    .btn-play {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+
+    .btn-speed {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .level-info {
+        font-size: 11px;
+        margin-top: 8px;
+    }
+
+    /* 积木区 - 横向滚动，紧凑显示 */
     .panel-blocks {
         order: 2;
     }
@@ -1542,8 +1583,8 @@ body {
     }
 
     .block {
-        min-width: 70px;
-        padding: 8px 10px;
+        min-width: 65px;
+        padding: 6px 8px;
         font-size: 11px;
         border-radius: 8px;
         flex-shrink: 0;
@@ -1558,20 +1599,22 @@ body {
         gap: 8px;
     }
 
-    /* 编程区 */
+    /* 编程区 - 底部展开，支持滚动 */
     .panel-code {
         order: 3;
         min-height: 100px;
     }
 
     .code-area {
-        min-height: 80px;
+        min-height: 100px;
+        max-height: 250px;
+        overflow-y: auto;
         padding: 8px;
     }
 
     .code-placeholder {
         font-size: 12px;
-        padding: 20px;
+        padding: 16px;
     }
 
     .code-block {
@@ -1598,41 +1641,6 @@ body {
         padding: 6px 10px;
         font-size: 11px;
         border-radius: 6px;
-    }
-
-    /* 游戏舞台 */
-    .panel-stage {
-        order: 1;
-    }
-
-    .stage-container {
-        padding: 4px;
-    }
-
-    #game-canvas {
-        max-height: 240px;
-    }
-
-    .stage-controls {
-        gap: 6px;
-        margin-top: 10px;
-    }
-
-    .btn-play {
-        padding: 8px 20px;
-        font-size: 13px;
-        border-radius: 20px;
-    }
-
-    .btn-speed {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-    }
-
-    .level-info {
-        font-size: 11px;
-        margin-top: 10px;
     }
 
     .progress-bar {
