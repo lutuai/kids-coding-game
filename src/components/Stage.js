@@ -48,8 +48,26 @@ class Stage {
      * 调整画布大小
      */
     resize() {
-        const maxSize = Math.min(400, window.innerWidth - 40);
+        const container = this.canvas.parentElement;
+        let availableWidth;
+
+        if (container) {
+            availableWidth = container.clientWidth - 16; // 减去padding
+        } else {
+            availableWidth = window.innerWidth - 32;
+        }
+
+        // 移动端进一步减小
+        const isMobile = window.innerWidth <= 480;
+        const maxSize = isMobile
+            ? Math.min(300, availableWidth)
+            : Math.min(400, availableWidth);
+
         this.cellSize = Math.floor(maxSize / Math.max(this.gridWidth, this.gridHeight));
+        // 确保最小单元格尺寸（移动端）
+        if (isMobile && this.cellSize < 40) {
+            this.cellSize = 40;
+        }
 
         const width = this.cellSize * this.gridWidth;
         const height = this.cellSize * this.gridHeight;

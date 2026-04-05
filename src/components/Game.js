@@ -293,7 +293,38 @@ class Game {
         if (this.isRunning) return;
 
         if (!this.codeArea.hasCode()) {
-            alert('请先添加一些指令积木~');
+            // 移动端友好的提示
+            const codeArea = document.getElementById('code-area');
+            if (codeArea) {
+                codeArea.style.borderColor = '#FF6B9D';
+                codeArea.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    codeArea.style.borderColor = '';
+                    codeArea.style.animation = '';
+                }, 1000);
+            }
+            // 添加临时提示
+            const hint = document.createElement('div');
+            hint.className = 'mobile-hint';
+            hint.textContent = '请先添加积木~';
+            hint.style.cssText = `
+                position: fixed;
+                bottom: 120px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 30px;
+                font-size: 14px;
+                z-index: 9999;
+                animation: fadeInOut 2s ease forwards;
+            `;
+            document.body.appendChild(hint);
+            setTimeout(() => hint.remove(), 2000);
+
+            // 音效提示
+            if (window.audioManager) window.audioManager.play('error');
             return;
         }
 

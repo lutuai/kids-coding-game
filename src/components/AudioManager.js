@@ -52,6 +52,10 @@ class AudioManager {
         if (!this.enabled) return;
 
         // 如果 AudioContext 未初始化，尝试初始化
+        if (!this.audioContext) {
+            this.tryInitAudioContext();
+        }
+
         if (this.audioContext && this.audioContext.state === 'suspended') {
             try {
                 await this.audioContext.resume();
@@ -61,7 +65,7 @@ class AudioManager {
         }
 
         // 使用 Web Audio API 生成音效
-        if (this.audioContext) {
+        if (this.audioContext && this.audioContext.state === 'running') {
             this.generateSound(soundType, options);
         }
     }
@@ -172,6 +176,17 @@ class AudioManager {
             case 'unlock':
                 // 解锁音效 - 华丽的上升音
                 this.playUnlockSound(now);
+                break;
+
+            case 'error':
+                // 错误提示音效 - 双音
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(200, now);
+                oscillator.frequency.setValueAtTime(150, now + 0.1);
+                gainNode.gain.setValueAtTime(this.volume * 0.15, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                oscillator.start(now);
+                oscillator.stop(now + 0.15);
                 break;
 
             default:

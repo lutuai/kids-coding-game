@@ -16,6 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 防止页面滚动（移动端）
 document.addEventListener('touchmove', function(e) {
+    // 允许在可滚动区域内滚动
+    const scrollableContainers = [
+        '.blocks-container',
+        '.code-area',
+        '.modal-content',
+        '.worlds-container',
+        '.editor-sidebar',
+        '.worlds-nav'
+    ];
+
+    for (const selector of scrollableContainers) {
+        if (e.target.closest(selector)) {
+            // 如果触摸在可滚动容器内，不阻止滚动
+            const container = e.target.closest(selector);
+            if (container && container.scrollHeight > container.clientHeight) {
+                return; // 允许滚动
+            }
+        }
+    }
+
+    // 其他区域阻止滚动
     if (e.target.closest('.game-container')) {
         e.preventDefault();
     }
