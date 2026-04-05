@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('💬 语音引导已就绪');
 });
 
-// 防止页面滚动（移动端）
+// 移动端触摸滚动支持
 document.addEventListener('touchmove', function(e) {
-    // 允许在可滚动区域内滚动
+    // 如果用户在可滚动容器上触摸，让它自然滚动
     const scrollableContainers = [
         '.blocks-container',
         '.code-area',
@@ -27,20 +27,12 @@ document.addEventListener('touchmove', function(e) {
     ];
 
     for (const selector of scrollableContainers) {
-        if (e.target.closest(selector)) {
-            // 如果触摸在可滚动容器内，不阻止滚动
-            const container = e.target.closest(selector);
-            if (container && container.scrollHeight > container.clientHeight) {
-                return; // 允许滚动
-            }
+        const container = e.target.closest(selector);
+        if (container) {
+            return; // 允许自然滚动
         }
     }
-
-    // 其他区域阻止滚动
-    if (e.target.closest('.game-container')) {
-        e.preventDefault();
-    }
-}, { passive: false });
+}, { passive: true });
 
 // 窗口大小改变时重新调整
 window.addEventListener('resize', () => {

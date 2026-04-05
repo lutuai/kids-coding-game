@@ -25,6 +25,8 @@ body {
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ========== 头部导航 ========== */
@@ -102,6 +104,8 @@ body {
         grid-template-rows: auto auto auto;
         padding: 16px;
         gap: 16px;
+        min-height: auto;
+        height: auto;
     }
 
     /* 积木面板改为横向滚动 */
@@ -140,13 +144,13 @@ body {
     /* 编程区 */
     .panel-code {
         order: 3;
-        min-height: 200px;
+        min-height: auto;
     }
 
     .code-area {
         min-height: 150px;
-        max-height: 250px;
-        overflow-y: auto;
+        max-height: none;
+        overflow-y: visible;
     }
 
     /* 游戏舞台放在最上面 */
@@ -1454,6 +1458,7 @@ body {
         padding: 6px 8px;
         flex-wrap: wrap;
         gap: 6px;
+        position: relative;
     }
 
     .logo {
@@ -1482,10 +1487,12 @@ body {
         font-size: 14px;
     }
 
-    /* 游戏容器 */
+    /* 游戏容器 - 让内容决定高度，整个页面可滚动 */
     .game-container {
         padding: 6px;
         gap: 8px;
+        min-height: auto;
+        height: auto;
     }
 
     .panel {
