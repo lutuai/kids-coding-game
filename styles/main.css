@@ -100,7 +100,7 @@ body {
 .game-container {
     display: grid;
     grid-template-columns: 180px 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr 1fr;
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
@@ -108,7 +108,7 @@ body {
     min-height: calc(100vh - 80px);
 }
 
-/* 积木面板 - 左侧纵向排列 */
+/* 积木面板 - 左侧纵向排列，占满两行 */
 .panel-blocks {
     grid-row: 1 / 3;
     display: flex;
@@ -133,6 +133,7 @@ body {
 .panel-stage {
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
 .stage-container {
@@ -149,12 +150,11 @@ body {
 .panel-code {
     display: flex;
     flex-direction: column;
-    min-height: 200px;
+    min-height: 0;
 }
 
 .code-area {
     flex: 1;
-    min-height: 150px;
     overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
